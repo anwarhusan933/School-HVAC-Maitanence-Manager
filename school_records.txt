@@ -1,1 +1,2 @@
 here will be school records.
+school name, moe id, watchman number, area.
