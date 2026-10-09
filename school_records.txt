@@ -1,2 +1,69 @@
-here will be school records.
-school name, moe id, watchman number, area.
+1|tafulal mobakkra ibtdaie amru bin salma tahfeez al quran al qareem + ibtidaieya 16 hail + rauda 17|174706+74526+75768|Girls|telivision|Hail|504134487
+
+2|thanawiya 15 hail - masarat|M749114|Girls|telivision|Hail|508888130
+
+3|rauda 21 + ibtidaieya 48 hail|75772+74741|Girls|al jamieen|Hail|535044555
+
+4|thanawiya 7 hail - masarat|M748825|Girls|al jamieen|Hail|505762028
+
+5|ibtidaieya 59 hail + ibtidaieya 63 hail|75727+174502|Girls|al jabal|Hail|599891950
+
+6|thanawiya 24 - masarat + mutawassita 33 hail|M175785+75728|Girls|al jabal|Hail|508003530
+
+7|madrasa al khamashiya liltafulal almobakkra + rauda almolhaqa bi ibtidaieya al khamashiya liltafulal almobakkra|174674+174699|Girls|al khamashiya|Hail|509107827
+
+8|ibtidaieya 27 hail|74537|Girls|al rasf|Hail|537646366
+
+9|madrasa al miqdad bin amru liltafulal almobakkra + madrasa al qairawan liltafulal almobakkra|174676+174673|Girls|al rasf|Hail|569894333
+
+10|mutawassita 27 hail|75057+174766|Girls|al rasf|Hail|537743161
+
+11|ibtidaieya tahfeez al quran 6 hail|75680|Girls|al samra|Hail|536439211
+
+12|ibtidaieya zaid al khair + mutawassita al wadi|73163+73687|Boys|al suwaifla|Hail|552442926
+
+13|rauda al shifa|174803|Girls|al shifa|Hail|509471803
+
+14|rauda almolhaqa bi ibtidaieya al ash + ibtidaieya al ash|74626+174640|Girls|al ash|Hail|532082815
+
+15|ibtidaieya al ash + mutawassita al ash|73187+73420|Boys|al ash|Hail|560855674
+
+16|mutawassita 28 hail|75059|Girls|al madaen|Hail|559670802
+
+17|madrasa al madaen al ibtidaieya al thaniya lilbanat mada|173092/73379/73134|Girls|al madaen|Hail|561815111
+
+18|rauda 35 + mutawassita 32 hail|75695+174625|Girls|al naqra|Hail|555835454
+
+19|rauda 18|75769|Girls|al naqra|Hail|502120518
+
+20|omaima bint qais thanawiya hail - masarat|M39174525|Girls|al naqra|Hail|509139889
+
+21|ibtidaieya 61 + mutawassita 14 hail|75798+74816|Girls|al wadi|Hail|537217526
+
+22|thanawiya abu ubaida bin al jarrah - masarat + madrasa al wadi al mutawassita al thaniya lilbaneen|M39173040|Boys|al wadi|Hail|554508561
+
+23|mutawassita 23 hail + rauda 33|174575+74851|Girls|sharq al majma|Hail|534469783
+
+24|mutawassita qasr al ashrawat + rauda almolhaqa bi ibtidaieya qasr al ashrawat + thanawiya qasr al ashrawat - masarat + ibtidaieya qasr al ashrawat|74797+174648+M3974889+74545|Girls|qasr al ashrawat|Hail|550237071
+
+25|thanawiya qaffar - masarat|M3974874|Girls|qaffar|Hail|530866494
+
+26|ibtidaieya qaffar al oola + markaz taleem al kabeerat bi ibtidaieya qaffar|74543+74962|Girls|qaffar|Hail|500526410
+
+27|ibtidaieya qaffar al thaniya + ibtidaieya 18 hail|75647|Girls|qaffar|Hail|552506445
+
+28|mutawassita qaffar + almadrasa almohdatha bi hay qaffar liltafulal almobakkra|74758+174740|Girls|qaffar|Hail|559124212
+
+29|thanawiya qaffar - masarat|M174002|Boys|qaffar|Hail|531438921
+
+30|mutawassita qaffar|73487|Boys|qaffar|Hail|594333380
+
+31|ibtidaieya mureifiq + mutawassita mureifiq|74707+74838|Girls|mureifiq|Hail|536116068
+
+32|ibtidaieya mureifiq + mutawassita mureifiq|73367+73570|Boys|mureifiq|Hail|508125653
+
+33|mutawassita al imam muhammad bin saud + barnamaj al tarbiya alfikriya bi mutawassita al imam muhammad bin saud|73449|Boys|al mahattah|Hail|551812100
+
+34|almadrasa almohdatha liltafulal almobakkra bi hay al shifa|174739|Girls|al shifa|Hail|537353011
+
+35|madrasa al malik abdulaziz liltafulal almobakkra|----|----|----|----|----
