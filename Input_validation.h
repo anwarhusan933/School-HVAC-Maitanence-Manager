@@ -1,23 +1,47 @@
 #ifndef INPUT_VALIDATION_H
 #define INPUT_VALIDATION_H
-#include<stdio.h>
+#include <stdio.h>
 #include <string.h>
-#include<stdlib.h>
+#include <stdlib.h>
+#include <errno.h>
+
 // read integer
-int read_integer(char *prompt)
+int get_integer(char *prompt)
 {
-    int integer;
-    printf("%s",prompt);
-    if(scanf("%d",&integer) == 1)
+    long value;
+    char line[100];
+    char *endptr;
+    int attempt_counter = 0;
+    while (1)
     {
-        char ch;
-        if(scanf("%c",&ch) == 1)
+        errno = 0;
+        if (attempt_counter == 3)
         {
-            printf("Error! Enter only integer.\n");
+            return -1;
         }
+        printf("%s", prompt);
+        if (fgets(line, sizeof(line), stdin) == NULL)
+        {
+            printf("Input error or end of input.\n");
+            exit(1);
+        }
+        value = strtol(line, &endptr, 10);
+        if (endptr == line || *endptr != '\n' && *endptr != '\0')
+        {
+            printf("Invalid input. Please enter only a whole number.\n");
+            attempt_counter++;
+            continue;
+        }
+        if (errno == ERANGE)
+        {
+            printf("Number is too long.\n");
+            attempt_counter++;
+            continue;
+        }
+        return (int)value;
     }
-
-    return integer;
-
 }
+
+// read float
+
 #endif
