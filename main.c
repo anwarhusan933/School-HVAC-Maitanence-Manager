@@ -16,6 +16,7 @@ typedef struct school_record
     char moe_id[MOE_ID_LEN];
     char area[AREA_LEN];
     char mobile_number[MOBILE_NUMBER_LEN];
+    char gander[12];
 } school_data;
 
 void show_menu();
@@ -81,6 +82,7 @@ void menu_operator(int menue_choice, int min, int max)
 void add_records()
 {
     school_data var;
+    int gander_selection;
     // if(!get_integer("Enter serial number : ",&var.serial_number))
     // {
     //     printf("Reading failed serial numbe!\n");
@@ -101,11 +103,34 @@ void add_records()
     if (!get_string("Enter Area name : ", var.area, sizeof(var.area)))
     {
         printf("Reading area name failed!\n");
+        return;
     }
     if (!get_phone_number("Enter Watchman number : ", var.mobile_number, sizeof(var.mobile_number)))
     {
         printf("Reading watchman phone number failed!\n");
+        return;
     }
+    // gander selection
+    if (!get_integer("1.Boys\n2.Girls\n3.Unknown\nEnter your choice : ", &gander_selection))
+    {
+        printf("Reading Selection failed!\n");
+        return;
+    }
+    switch (gander_selection)
+    {
+    case 1:
+        strcpy(var.gander, "Boys");
+        break;
+    case 2:
+        strcpy(var.gander, "Girls");
+        break;
+    case 3:
+        strcpy(var.gander, "Unknown");
+        break;
+    default:
+        printf("Invalid choice. Please enter 1 to 3.\n");
+    }
+
     FILE *fp;
     fp = fopen(RECORD_FILE, "a");
     if (fp == NULL)
@@ -114,7 +139,8 @@ void add_records()
         fclose(fp);
         return;
     }
-    fprintf(fp, "%d|%s|%s|%s|%s\n", var.serial_number, var.school_name, var.moe_id, var.area, var.mobile_number);
+    fprintf(fp, "%d|%s|%s|%s|%s|%s\n", var.serial_number, var.school_name, var.moe_id, var.area, var.mobile_number, var.gander);
+    printf("Record added Successfully.\n");
     fclose(fp);
 }
 
@@ -131,20 +157,20 @@ void display()
         fclose(fp);
         return;
     }
-    if ((fscanf(fp, "%d|%[^|]|%[^|]|%[^|]|%[^\n]", &var.serial_number, var.school_name, var.moe_id, var.area, var.mobile_number)) == EOF)
+    if ((fscanf(fp, "%d|%[^|]|%[^|]|%[^|]|%[^|]|%[^\n]", &var.serial_number, var.school_name, var.moe_id, var.area, var.mobile_number, var.gander)) == EOF)
     {
         printf("File is empty. Please add data befor display.\n");
         return;
     }
     rewind(fp);
-    printf("----------------------------------------------------------------------------------------------------------------\n");
-    printf("%-2c%-7s%-50s%-20s%-20s%-20s\n", ' ', "SR.NO", "SCHOOL NAME", "MOE ID", "AREA", "PHONE NUMBER");
-    printf("----------------------------------------------------------------------------------------------------------------\n");
-    while (fscanf(fp, "%d|%[^|]|%[^|]|%[^|]|%[^\n]", &var.serial_number, var.school_name, var.moe_id, var.area, var.mobile_number) == 5)
+    printf("--------------------------------------------------------------------------------------------------------------------------------\n");
+    printf("%-2c%-7s%-50s%-20s%-20s%-20s%-10s\n", ' ', "SR.NO", "SCHOOL NAME", "MOE ID", "AREA", "PHONE NUMBER", "Gender");
+    printf("--------------------------------------------------------------------------------------------------------------------------------\n");
+    while (fscanf(fp, "%d|%[^|]|%[^|]|%[^|]|%[^|]|%[^\n]", &var.serial_number, var.school_name, var.moe_id, var.area, var.mobile_number, var.gander) == 6)
     {
-        printf("%-4c%-5d%-50s%-20s%-20s%-20s\n", ' ', var.serial_number, var.school_name, var.moe_id, var.area, var.mobile_number);
+        printf("%-4c%-5d%-50s%-20s%-20s%-20s%-10s\n", ' ', var.serial_number, var.school_name, var.moe_id, var.area, var.mobile_number, var.gander);
     }
-    printf("----------------------------------------------------------------------------------------------------------------\n");
+    printf("--------------------------------------------------------------------------------------------------------------------------------\n");
     fclose(fp);
     int total_records = load_records();
     printf("Total records : %d", total_records);
@@ -162,14 +188,14 @@ int load_records()
         fclose(fp);
         return 0;
     }
-    if ((fscanf(fp, "%d|%[^|]%[^|]|%[^|]|%[^\n]", &var.serial_number, var.school_name, var.moe_id, var.area, var.mobile_number)) == EOF)
+    if ((fscanf(fp, "%d|%[^|]%[^|]|%[^|]|%[^|]|%[^\n]", &var.serial_number, var.school_name, var.moe_id, var.area, var.mobile_number, var.gander)) == EOF)
     {
         printf("File is empty. Please add records.\n");
         fclose(fp);
         return 0;
     }
     rewind(fp);
-    while (fscanf(fp, "%d|%[^|]|%[^|]|%[^|]|%[^\n]", &var.serial_number, var.school_name, var.moe_id, var.area, var.mobile_number) == 5)
+    while (fscanf(fp, "%d|%[^|]|%[^|]|%[^|]|%[^|]|%[^\n]", &var.serial_number, var.school_name, var.moe_id, var.area, var.mobile_number, var.gander) == 6)
     {
         record_count++;
     }
@@ -212,18 +238,17 @@ void delete()
         return;
     }
 
-    while ((fscanf(fp, "%d|%[^|]|%[^|]|%[^|]|%[^\n]", &var.serial_number, var.school_name, var.moe_id, var.area, var.mobile_number)) == 5)
+    while ((fscanf(fp, "%d|%[^|]|%[^|]|%[^|]|%[^|]|%[^\n]", &var.serial_number, var.school_name, var.moe_id, var.area, var.mobile_number, var.gander)) == 6)
     {
 
-        // printf("I am in reading data from file\n");
         if (search_serial == var.serial_number)
         {
             found_status = 1;
-            printf("Founded records.\n");
-            printf("%-4c%-5d%-50s%-20s%-20s%-20s\n", ' ', var.serial_number, var.school_name, var.moe_id, var.area, var.mobile_number);
+            printf("************Founded records************\n");
+            printf("%-4c%-5d%-50s%-20s%-20s%-20s%-10s\n", ' ', var.serial_number, var.school_name, var.moe_id, var.area, var.mobile_number, var.gander);
             printf("Are sure you want to delete?\n");
             printf("1.Confirm\n");
-            printf("0.Decline");
+            printf("0.Decline\n");
             int choice;
             if (!get_integer("Please enter your choice : ", &choice))
             {
@@ -251,10 +276,10 @@ void delete()
         else
         {
             serial++;
-            fprintf(fp1, "%d|%s|%s|%s|%s\n", serial, var.school_name, var.moe_id, var.area, var.mobile_number);
+            fprintf(fp1, "%d|%s|%s|%s|%s|%s\n", serial, var.school_name, var.moe_id, var.area, var.mobile_number, var.gander);
         }
     }
-    if(!found_status)
+    if (!found_status)
     {
         printf("Records not founded.\n");
     }
